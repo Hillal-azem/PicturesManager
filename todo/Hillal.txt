@@ -1,0 +1,4 @@
+
+// TODO
+//  We can use ImageIcon, witch is a Java class. It allows to create minimized icons from images.
+//   

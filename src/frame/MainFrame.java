@@ -20,9 +20,7 @@ public class MainFrame extends JFrame {
         this.setTitle("Pictures Manager");
 
         ToolsMenu menuBar = new ToolsMenu();
-        JMenuBar menu = menuBar.getMenuBar();
-
-        this.setJMenuBar(menu);
+        this.setJMenuBar(menuBar);
 
         this.setVisible(true);
     }

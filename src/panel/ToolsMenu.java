@@ -1,29 +1,35 @@
 package panel;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class ToolsMenu {
+public class ToolsMenu extends JMenuBar{
 
-    public JMenuBar getMenuBar() {
-        return menuBar;
-    }
-
-    private JMenuBar menuBar = new JMenuBar();
+    private Color bgColor = Color.WHITE;
 
     public ToolsMenu() {
         JMenu menu1 = new JMenu("File");
-        menuBar.add(menu1);
+        this.add(menu1);
         JMenu menu2 = new JMenu("Edit");
-        menuBar.add(menu2);
+        this.add(menu2);
         JMenu menu3 = new JMenu("View");
-        menuBar.add(menu3);
+        this.add(menu3);
         JMenu menu4 = new JMenu("Help");
-        menuBar.add(menu4);
+        this.add(menu4);
 
-        JMenuItem menuItem = new JMenuItem("Il n'y a aucune aide ici !");
+        MenuItems menu4Item = new MenuItems(,);
+
         menu4.add(menuItem);
+        menu4.add(menuItem2);
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(bgColor);
+        g2d.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
+    }
 
 
 

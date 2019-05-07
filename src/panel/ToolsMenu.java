@@ -2,25 +2,83 @@ package panel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ToolsMenu extends JMenuBar{
 
     private Color bgColor = Color.WHITE;
 
     public ToolsMenu() {
-        JMenu menu1 = new JMenu("File");
-        this.add(menu1);
-        JMenu menu2 = new JMenu("Edit");
-        this.add(menu2);
-        JMenu menu3 = new JMenu("View");
-        this.add(menu3);
-        JMenu menu4 = new JMenu("Help");
-        this.add(menu4);
+        JMenu menuFile = new JMenu("File");
+        this.add(menuFile);
+        JMenu menuEdit = new JMenu("Edit");
+        this.add(menuEdit);
+        JMenu menuView = new JMenu("View");
+        this.add(menuView);
+        JMenu menuHelp = new JMenu("Help");
+        this.add(menuHelp);
 
-        MenuItems menu4Item = new MenuItems(,);
+        actionFile(new MenuItems(stringToArray("Import"),menuFile).getMenuItems());
+        actionEdit(new MenuItems(stringToArray("Rename","Delete"),menuEdit).getMenuItems());
+        actionView(new MenuItems(stringToArray("DisplayView","Undisplayed View"),menuView).getMenuItems());
+        actionHelp(new MenuItems(stringToArray("help ?"),menuHelp).getMenuItems());
+    }
 
-        menu4.add(menuItem);
-        menu4.add(menuItem2);
+    private void actionFile(ArrayList<JMenuItem> itemsFile){
+        itemsFile.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+    }
+
+    private void actionEdit(ArrayList<JMenuItem> itemsEdit){
+        itemsEdit.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        itemsEdit.get(1).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    private void actionView(ArrayList<JMenuItem> itemsView){
+        itemsView.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        itemsView.get(1).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    private void actionHelp(ArrayList<JMenuItem> itemsHelp){
+        itemsHelp.get(0).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
+
+    private String[] stringToArray(String...array){
+        return array;
     }
 
     @Override
@@ -30,8 +88,5 @@ public class ToolsMenu extends JMenuBar{
         g2d.setColor(bgColor);
         g2d.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
     }
-
-
-
 
 }

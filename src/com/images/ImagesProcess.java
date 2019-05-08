@@ -14,7 +14,7 @@ public class ImagesProcess {
 
     private String pathToImages;
     private File[] imageFiles;
-    private List<ImageIcon> icons;
+    private List<Icon> icons;
 
     public ImagesProcess(String pathToImages) {
         this.pathToImages = pathToImages;
@@ -26,8 +26,8 @@ public class ImagesProcess {
         return new File(pathToImages).listFiles();
     }
 
-    private List<ImageIcon> getImagesFromFiles(){
-        List<ImageIcon> iconsList = new ArrayList<>();
+    private List<Icon> getImagesFromFiles(){
+        List<Icon> iconsList = new ArrayList<>();
         Image image = null;
         for (File file :
                 imageFiles) {
@@ -57,7 +57,7 @@ public class ImagesProcess {
         return buf;
     }
 
-    public List<ImageIcon> getIcons() {
+    public List<Icon> getIcons() {
         return icons;
     }
 

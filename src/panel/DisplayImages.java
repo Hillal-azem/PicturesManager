@@ -1,5 +1,6 @@
 package panel;
 
+import com.images.Icon;
 import com.images.ImagesProcess;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class DisplayImages extends JPanel {
         ArrayList<JButton> buttonList = new ArrayList<>();
 
         for (int i = 0; i<icons.size();i++){
-            buttonList.add(new JButton(icons.get(i).get,icons.get(i)));
+            buttonList.add(new JButton(icons.get(i).getName(),icons.get(i)));
             buttonList.get(i).setBorder( new EmptyBorder(5, 8, 5, 8) );
             buttonList.get(i).setBorderPainted(false);
             buttonList.get(i).setHorizontalTextPosition(SwingConstants.CENTER);

@@ -1,6 +1,7 @@
 package frame;
 
 import MenuBar.ToolsMenu;
+import panel.DisplayImages;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,8 @@ public class MainFrame extends JFrame {
 
         ToolsMenu menuBar = new ToolsMenu();
         this.setJMenuBar(menuBar);
+
+        this.setContentPane(new DisplayImages());
 
         this.setVisible(true);
     }

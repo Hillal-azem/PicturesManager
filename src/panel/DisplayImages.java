@@ -5,24 +5,17 @@ import java.awt.*;
 
 public class DisplayImages extends JPanel {
 
-    private ImageIcon icon;
+    private ImageIcon image;
+    private JLabel label;
 
     public DisplayImages() {
 
-        loadImage();
-        initPanel();
+        setLayout(new FlowLayout());
+
+        image = new ImageIcon(getClass().getResource("Images/myImages/DSC_0007.JPG"));
+
+        label =
+
     }
-
-    private void loadImage() {
-
-        icon = new ImageIcon("book.jpg");
-    }
-
-    private void initPanel() {
-
-        int w = icon.getIconWidth();
-        int h = icon.getIconHeight();
-        setPreferredSize(new Dimension(w, h));
-    }
-
 }
+

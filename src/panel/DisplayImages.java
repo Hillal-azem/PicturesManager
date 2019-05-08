@@ -1,21 +1,26 @@
 package panel;
 
+import com.images.ImagesProcess;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DisplayImages extends JPanel {
 
     public DisplayImages() {
 
-        ImageIcon icon = new ImageIcon(new ImageIcon("Images/myImages/IMG_20130717_163711.jpg").getImage().getScaledInstance(130,100,Image.SCALE_DEFAULT));
+        //this.setLayout(new BorderLayout());
+
+        ImagesProcess imagesProcess = new ImagesProcess("Images/myImages");
+        List<ImageIcon> icons = imagesProcess.getIcons();
 
         ArrayList<JButton> buttonList = new ArrayList<>();
 
-        for (int i = 0; i<4;i++){
-
-            buttonList.add(new JButton("ok",icon));
+        for (int i = 0; i<icons.size();i++){
+            buttonList.add(new JButton("ok",icons.get(i)));
             buttonList.get(i).setBorder( new EmptyBorder(5, 8, 5, 8) );
             buttonList.get(i).setBorderPainted(false);
             buttonList.get(i).setHorizontalTextPosition(SwingConstants.CENTER);

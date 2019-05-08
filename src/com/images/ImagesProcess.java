@@ -1,7 +1,5 @@
 package com.images;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -16,12 +14,12 @@ public class ImagesProcess {
 
     private String pathToImages;
     private File[] imageFiles;
-    private List<ImageIcon> icones;
+    private List<ImageIcon> icons;
 
     public ImagesProcess(String pathToImages) {
         this.pathToImages = pathToImages;
         this.imageFiles = getImageFilesFromDirectory();
-        this.icones = getImagesFromFiles();
+        this.icons = getImagesFromFiles();
     }
 
     private File[] getImageFilesFromDirectory(){
@@ -44,7 +42,9 @@ public class ImagesProcess {
         return iconsList;
     }
 
-    public List<ImageIcon> getIcones() {
-        return icones;
+    public List<ImageIcon> getIcons() {
+        return icons;
     }
+
+
 }

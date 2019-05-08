@@ -10,10 +10,21 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 
+/***
+ * Class with static methods. It manages the click events
+ * on the items of each menu
+ *
+ */
 class ItemsAction {
 
+    /**
+     * Static method managing event of importing images
+     * @param itemsFile ArrayList<JMenuItem>
+     */
     static void actionFile(ArrayList<JMenuItem> itemsFile){
+
         itemsFile.get(0).addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 BufferedImage image;
@@ -50,6 +61,10 @@ class ItemsAction {
 
     }
 
+    /**
+     * Static method managing event of editing. Rename and delete
+     * @param itemsEdit
+     */
     static void actionEdit(ArrayList<JMenuItem> itemsEdit){
         itemsEdit.get(0).addActionListener(new ActionListener() {
             @Override

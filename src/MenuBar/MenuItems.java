@@ -1,4 +1,4 @@
-package panel;
+package MenuBar;
 
 import javax.swing.*;
 import java.awt.*;

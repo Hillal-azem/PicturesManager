@@ -5,10 +5,14 @@ import panel.DisplayImages;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainFrame extends JFrame {
 
-    public MainFrame() throws HeadlessException {
+    private ImageIcon image;
+    private JLabel label;
+
+    public MainFrame() throws HeadlessException, IOException {
 
         this.setSize(1200, 800);
         this.setLocationRelativeTo(null);
@@ -21,8 +25,14 @@ public class MainFrame extends JFrame {
         ToolsMenu menuBar = new ToolsMenu();
         this.setJMenuBar(menuBar);
 
-        this.setContentPane(new DisplayImages());
+        JPanel panel = new DisplayImages();
+        panel.setBackground(Color.WHITE);
+        
+        this.setContentPane(panel);
 
         this.setVisible(true);
     }
+
+
 }
+

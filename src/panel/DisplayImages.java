@@ -21,14 +21,22 @@ public class DisplayImages extends JPanel {
         ArrayList<JButton> buttonList = new ArrayList<>();
 
         for (int i = 0; i<icons.size();i++){
+
             buttonList.add(new JButton(icons.get(i).getName(),icons.get(i)));
-            buttonList.get(i).setBorder( new EmptyBorder(5, 8, 5, 8) );
+
+            buttonList.get(i).setLayout(null);
+
+            buttonList.get(i).setPreferredSize(new Dimension(145,130));
+
+            buttonList.get(i).setMaximumSize(new Dimension(130,100));
+
             buttonList.get(i).setBorderPainted(false);
             buttonList.get(i).setHorizontalTextPosition(SwingConstants.CENTER);
             buttonList.get(i).setVerticalTextPosition(SwingConstants.BOTTOM);
             buttonList.get(i).setBackground(Color.WHITE);
+            //buttonList.get(i).setMaximumSize(new Dimension(10,10));
 
-            this.add(buttonList.get(i), BorderLayout.WEST);
+            this.add(buttonList.get(i));
         }
     }
 }

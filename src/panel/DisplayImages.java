@@ -20,6 +20,8 @@ public class DisplayImages extends JPanel {
 
         ArrayList<JButton> buttonList = new ArrayList<>();
 
+        this.setLayout(new FlowLayout(FlowLayout.LEFT));
+
         for (int i = 0; i<icons.size();i++){
 
             buttonList.add(new JButton(icons.get(i).getName(),icons.get(i)));

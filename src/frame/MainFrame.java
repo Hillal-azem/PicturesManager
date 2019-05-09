@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
 
     public MainFrame() throws HeadlessException, IOException {
 
-        this.setSize(1200, 800);
+        this.setSize(1240, 800);
         this.setLocationRelativeTo(null);
         ImageIcon favicon = new ImageIcon("Images/favicon.png");
         this.setIconImage(favicon.getImage());
@@ -25,10 +25,15 @@ public class MainFrame extends JFrame {
         ToolsMenu menuBar = new ToolsMenu();
         this.setJMenuBar(menuBar);
 
+
         JPanel panel = new DisplayImages();
         panel.setBackground(Color.WHITE);
-        
-        this.setContentPane(panel);
+
+        this.add(panel);
+
+        //JScrollPane scrollBar = new JScrollPane(panel);
+
+        //this.getContentPane().add(scrollBar, BorderLayout.CENTER);
 
         this.setVisible(true);
     }

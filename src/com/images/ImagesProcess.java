@@ -1,7 +1,6 @@
 package com.images;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -53,7 +52,6 @@ public class ImagesProcess {
         g.drawImage(source, 0, 0, width, height, null);
         g.dispose();
 
-        /* On retourne l'image bufferisée, qui est une image. */
         return buf;
     }
 

@@ -7,16 +7,16 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DisplayImages extends JPanel {
 
     public DisplayImages() {
 
-        //this.setLayout(new BorderLayout());
-
         ImagesProcess imagesProcess = new ImagesProcess("Images/myImages");
         List<Icon> icons = imagesProcess.getIcons();
+        Collections.sort(icons);
 
         ArrayList<JButton> buttonList = new ArrayList<>();
 

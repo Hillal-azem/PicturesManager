@@ -3,7 +3,7 @@ package com.images;
 import javax.swing.*;
 import java.awt.*;
 
-public class Icon extends ImageIcon {
+public class Icon extends ImageIcon implements Comparable<Icon>{
 
     private String name;
     private String path;
@@ -20,5 +20,10 @@ public class Icon extends ImageIcon {
 
     public String getPath() {
         return path;
+    }
+
+    @Override
+    public int compareTo(Icon o) {
+        return name.compareTo(o.getName());
     }
 }

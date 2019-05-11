@@ -1,5 +1,5 @@
-import com.images.ImagesProcess;
-import frame.MainFrame;
+import com.suppicture.images.process.LoadImages;
+import com.suppicture.ihm.frame.MainFrame;
 
 import java.io.IOException;
 
@@ -8,6 +8,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         MainFrame windows = new MainFrame();
 
-        ImagesProcess images = new ImagesProcess("Images/myImages");
+        LoadImages images = new LoadImages("Images/myImages");
     }
 }

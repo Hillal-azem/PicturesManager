@@ -1,4 +1,4 @@
-package com.images;
+package com2.load.images;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ImagesProcess {
+public class LoadImages {
 
     private String pathToImages;
     private File[] imageFiles;
     private List<Icon> icons;
 
-    public ImagesProcess(String pathToImages) {
+    public LoadImages(String pathToImages) {
         this.pathToImages = pathToImages;
         this.imageFiles = getImageFilesFromDirectory();
         this.icons = getImagesFromFiles();

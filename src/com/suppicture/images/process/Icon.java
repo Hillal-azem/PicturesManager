@@ -1,4 +1,4 @@
-package com.images;
+package com2.load.images;
 
 import javax.swing.*;
 import java.awt.*;

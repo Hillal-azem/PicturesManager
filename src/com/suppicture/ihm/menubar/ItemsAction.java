@@ -1,6 +1,6 @@
-package MenuBar;
+package com.suppicture.ihm;
 
-import file.ImagesFilter;
+import com.suppicture.file.process.ImagesFilter;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.ArrayList;
 
 /***
  * Class with static methods. It manages the click events
@@ -19,11 +18,11 @@ class ItemsAction {
 
     /**
      * Static method managing event of importing images
-     * @param itemsFile ArrayList<JMenuItem>
+     * @param item MyJMenuItem
      */
-    static void actionFile(ArrayList<JMenuItem> itemsFile){
+    static void actionImport(MyJMenuItem item){
 
-        itemsFile.get(0).addActionListener(new ActionListener() {
+        item.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,7 +36,7 @@ class ItemsAction {
                 choices.setFileFilter(imagesFilter);
                 choices.setMultiSelectionEnabled(true) ;
 
-                if(JFileChooser.APPROVE_OPTION == choices.showOpenDialog(itemsFile.get(0))){
+                if(JFileChooser.APPROVE_OPTION == choices.showOpenDialog(item)){
 
                     File[] files = choices.getSelectedFiles();
 
@@ -63,17 +62,31 @@ class ItemsAction {
 
     /**
      * Static method managing event of editing. Rename and delete
-     * @param itemsEdit
+     * @param item MyJMenuItem
      */
-    static void actionEdit(ArrayList<JMenuItem> itemsEdit){
-        itemsEdit.get(0).addActionListener(new ActionListener() {
+    static void actionRename(MyJMenuItem item){
+        item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
             }
-        });
 
-        itemsEdit.get(1).addActionListener(new ActionListener() {
+        });
+    }
+
+    static void actionDelete(MyJMenuItem item){
+        item.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+
+        });
+    }
+
+    static void actionView(MyJMenuItem item){
+
+        item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -81,24 +94,8 @@ class ItemsAction {
         });
     }
 
-    static void actionView(ArrayList<JMenuItem> itemsView){
-        itemsView.get(0).addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        itemsView.get(1).addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-    }
-
-    static void actionHelp(ArrayList<JMenuItem> itemsHelp){
-        itemsHelp.get(0).addActionListener(new ActionListener() {
+    static void actionHelp(MyJMenuItem item){
+        item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 

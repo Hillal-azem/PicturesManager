@@ -9,16 +9,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class LoadImages {
+public class ImagesLoader {
+
+    private static ImagesLoader instance = null;
 
     private String pathToImages;
     private File[] imageFiles;
     private List<Icon> icons;
 
-    public LoadImages(String pathToImages) {
+    private ImagesLoader(String pathToImages) {
         this.pathToImages = pathToImages;
         this.imageFiles = getImageFilesFromDirectory();
         this.icons = getImagesFromFiles();
+    }
+
+
+    public static ImagesLoader getInstance(String pathToImages) {
+        if (instance == null){
+            return new ImagesLoader(pathToImages);
+        }
+        else {
+            return instance;
+        }
+    }
+
+    public static ImagesLoader getInstance(){
+        if (instance == null){
+            return new ImagesLoader("Images/myImages");
+        }
+        else {
+            return instance;
+        }
     }
 
     private File[] getImageFilesFromDirectory(){

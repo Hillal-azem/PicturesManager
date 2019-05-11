@@ -1,13 +1,20 @@
 package com.suppicture.ihm.menubar;
 
 import com.suppicture.file.process.ImagesFilter;
+import com.suppicture.ihm.panel.ImagesProcess;
+import com.suppicture.ihm.panel.MainPanel;
+import com.suppicture.images.process.Icon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /***
  * Class with static methods. It manages the click events
@@ -64,7 +71,7 @@ class ItemsAction {
      * Static method managing event of editing. Rename and delete
      * @param item MyJMenuItem
      */
-    static void actionRename(MyJMenuItem item){
+    public static void actionRename(MyJMenuItem item){
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,7 +81,7 @@ class ItemsAction {
         });
     }
 
-    static void actionDelete(MyJMenuItem item){
+    public static void actionDelete(MyJMenuItem item){
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,7 +91,7 @@ class ItemsAction {
         });
     }
 
-    static void actionView(MyJMenuItem item){
+    public static void actionView(MyJMenuItem item){
 
         item.addActionListener(new ActionListener() {
             @Override
@@ -94,7 +101,7 @@ class ItemsAction {
         });
     }
 
-    static void actionHelp(MyJMenuItem item){
+    public static void actionHelp(MyJMenuItem item){
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,4 +110,30 @@ class ItemsAction {
         });
     }
 
+    public static void actionSelectAll(MyJMenuItem selectAllItems) {
+        selectAllItems.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ImagesProcess.addAllToList();
+                for (JButton imageButton :
+                        MainPanel.getImageButtons()) {
+                    imageButton.setBorderPainted(true);
+                    imageButton.setBorder(new LineBorder(Color.BLUE));
+                }
+            }
+        });
+    }
+
+    public static void actionUnselectAll(MyJMenuItem unselectAllItems){
+        unselectAllItems.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ImagesProcess.removeAllFromList();
+                for (JButton imageButton :
+                        MainPanel.getImageButtons()) {
+                    imageButton.setBorderPainted(false);
+                }
+            }
+        });
+    }
 }

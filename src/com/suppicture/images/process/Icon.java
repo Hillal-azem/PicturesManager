@@ -26,4 +26,5 @@ public class Icon extends ImageIcon implements Comparable<Icon>{
     public int compareTo(Icon o) {
         return name.compareTo(o.getName());
     }
+
 }

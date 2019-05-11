@@ -3,7 +3,7 @@ package com.suppicture.ihm.panel;
 import com.suppicture.images.process.Icon;
 
 import com.suppicture.ihm.menubar.ToolsMenu;
-import com.suppicture.images.process.LoadImages;
+import com.suppicture.images.process.ImagesLoader;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -14,22 +14,30 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class DisplayImages extends JPanel {
+public class MainPanel extends JPanel {
 
+    private static List<JButton> imageButtons;
+    private static List<Icon> icons;
     private ToolsMenu menuBar;
 
-    public DisplayImages(ToolsMenu menuBar) {
+    public MainPanel(ToolsMenu menuBar) {
         this.menuBar = menuBar;
 
-        LoadImages loadImages = new LoadImages("Images/myImages");
-        List<Icon> icons = loadImages.getIcons();
+        ImagesLoader imagesLoader = ImagesLoader.getInstance("Images/myImages");
+        List<Icon> icons = imagesLoader.getIcons();
         Collections.sort(icons);
+        MainPanel.icons = icons;
 
-        ArrayList<JButton> buttonList = new ArrayList<>();
-        ArrayList<Icon> selectedImages = new ArrayList<>();
+        List<JButton> imagesButtons = new ArrayList<>();
+        imageButtons = imagesButtons;
 
         this.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+        this.display();
+
+    }
+
+    public void display(){
         JButton imageButton;
         for (Icon icon :
                 icons) {
@@ -54,7 +62,7 @@ public class DisplayImages extends JPanel {
                 }
             });
 
-            buttonList.add(imageButton);
+            imageButtons.add(imageButton);
             imageButton.setLayout(null);
             imageButton.setPreferredSize(new Dimension(145,130));
             imageButton.setBorderPainted(false);
@@ -64,6 +72,14 @@ public class DisplayImages extends JPanel {
 
             this.add(imageButton);
         }
+    }
+
+    public static List<JButton> getImageButtons() {
+        return imageButtons;
+    }
+
+    public static List<Icon> getIcons() {
+        return icons;
     }
 }
 

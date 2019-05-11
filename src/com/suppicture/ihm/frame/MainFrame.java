@@ -1,7 +1,7 @@
 package com.suppicture.ihm.frame;
 
 import com.suppicture.ihm.menubar.ToolsMenu;
-import com.suppicture.ihm.panel.DisplayImages;
+import com.suppicture.ihm.panel.MainPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
         ToolsMenu menuBar = new ToolsMenu();
         this.setJMenuBar(menuBar);
 
-        JPanel panel = new DisplayImages(menuBar);
+        JPanel panel = new MainPanel(menuBar);
         panel.setBackground(Color.WHITE);
 
         this.add(panel);

@@ -1,6 +1,9 @@
 package com.suppicture.ihm.menubar;
 
+import com.suppicture.ihm.frame.MainFrame;
 import com.suppicture.ihm.panel.ImagesProcess;
+import com.suppicture.ihm.panel.MainPanel;
+import com.suppicture.images.process.ImagesLoader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +26,14 @@ public class ToolsMenu extends JMenuBar{
         MyJMenuItem importItem = new MyJMenuItem("Import");
         menuFile.add(importItem);
         ItemsAction.actionImport(importItem);
+
+        MyJMenuItem selectAllItems = new MyJMenuItem("Select all");
+        menuFile.add(selectAllItems);
+        ItemsAction.actionSelectAll(selectAllItems);
+
+        MyJMenuItem unselectAllItems = new MyJMenuItem("Unselect all");
+        menuFile.add(unselectAllItems);
+        ItemsAction.actionUnselectAll(unselectAllItems);
 
         MyJMenuItem renameItem = new MyJMenuItem("Rename");
         renameItem.setEnabled(false);
@@ -68,7 +79,6 @@ public class ToolsMenu extends JMenuBar{
         }
         else {
             this.getMenu(1).getItem(1).setEnabled(true);
-            System.out.println(ImagesProcess.getSelectedImages().size());
             if (ImagesProcess.getSelectedImages().size() == 1){
                 this.getMenu(1).getItem(0).setEnabled(true);
             }
@@ -76,7 +86,6 @@ public class ToolsMenu extends JMenuBar{
                 this.getMenu(1).getItem(0).setEnabled(false);
             }
         }
-
     }
 
 }

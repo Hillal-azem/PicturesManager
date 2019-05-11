@@ -45,4 +45,13 @@ public class ImagesProcess {
     public static boolean noImagesSelected(){
         return selectedImages.isEmpty();
     }
+
+    public static void addAllToList(){
+        selectedImages.clear();
+        selectedImages.addAll(MainPanel.getIcons());
+    }
+
+    public static void removeAllFromList() {
+        selectedImages.clear();
+    }
 }

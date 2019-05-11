@@ -1,9 +1,9 @@
-package panel;
+package com.suppicture.ihm.panel;
 
-import com2.load.images.Icon;
+import com.suppicture.images.process.Icon;
 
 import com.suppicture.ihm.menubar.ToolsMenu;
-import com2.load.images.LoadImages;
+import com.suppicture.images.process.LoadImages;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;

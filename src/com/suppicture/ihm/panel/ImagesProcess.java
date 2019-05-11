@@ -1,8 +1,8 @@
-package panel;
+package com.suppicture.ihm.panel;
 
 import java.util.ArrayList;
 import java.util.List;
-import com2.load.images.Icon;
+import com.suppicture.images.process.Icon;
 
 public class ImagesProcess {
 
@@ -39,7 +39,7 @@ public class ImagesProcess {
 
 
     /**
-     * Check if images are selected on the panel
+     * Check if images are selected on the com.suppicture.ihm.panel
      * @return boolean
      */
     public static boolean noImagesSelected(){

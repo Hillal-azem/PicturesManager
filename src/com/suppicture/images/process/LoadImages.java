@@ -1,4 +1,4 @@
-package com2.load.images;
+package com.suppicture.images.process;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

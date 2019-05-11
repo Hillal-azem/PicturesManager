@@ -1,4 +1,4 @@
-package com.suppicture.file;
+package com.suppicture.file.process;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;

@@ -1,4 +1,4 @@
-package com.suppicture.ihm;
+package com.suppicture.ihm.menubar;
 
 import com.suppicture.file.process.ImagesFilter;
 

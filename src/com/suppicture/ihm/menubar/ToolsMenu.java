@@ -1,6 +1,6 @@
-package com.suppicture.ihm;
+package com.suppicture.ihm.menubar;
 
-import panel.ImagesProcess;
+import com.suppicture.ihm.panel.ImagesProcess;
 
 import javax.swing.*;
 import java.awt.*;

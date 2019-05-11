@@ -1,7 +1,7 @@
-package com.suppicture.frame;
+package com.suppicture.ihm.frame;
 
-import com.suppicture.ihm.ToolsMenu;
-import panel.DisplayImages;
+import com.suppicture.ihm.menubar.ToolsMenu;
+import com.suppicture.ihm.panel.DisplayImages;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 
         this.add(panel);
 
-        //JScrollPane scrollBar = new JScrollPane(panel);
+        //JScrollPane scrollBar = new JScrollPane(com.suppicture.ihm.panel);
 
         //this.getContentPane().add(scrollBar, BorderLayout.CENTER);
 

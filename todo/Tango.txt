@@ -29,10 +29,10 @@ public class ImagesProcess {
     private List<ImageIcon> getImagesFromFiles(){
         List<ImageIcon> iconsList = new ArrayList<>();
         BufferedImage image = null;
-        for (File file :
+        for (File com.suppicture.file :
                 imageFiles) {
             try {
-                image = ImageIO.read(file);
+                image = ImageIO.read(com.suppicture.file);
             } catch (IOException e) {
                 e.printStackTrace();
             }

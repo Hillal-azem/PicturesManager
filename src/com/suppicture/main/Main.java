@@ -1,3 +1,5 @@
+package com.suppicture.main;
+
 import com.suppicture.images.process.LoadImages;
 import com.suppicture.ihm.frame.MainFrame;
 

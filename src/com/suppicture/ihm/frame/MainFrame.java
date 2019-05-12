@@ -11,12 +11,12 @@ import java.io.IOException;
 public class MainFrame extends JFrame {
 
     private int totalImages;
-    private ToolsMenu menuBar = new ToolsMenu();
-    private MainPanel panel = new MainPanel(menuBar);
+    private ToolsMenu menuBar = new ToolsMenu(this);
+
 
     public MainFrame() throws HeadlessException, IOException {
-        this.totalImages = MainPanel.getIcons().size();
         this.setSize(1240, 800);
+        this.setMinimumSize(new Dimension(490,0));
         this.setLocationRelativeTo(null);
         ImageIcon favicon = new ImageIcon("Images/favicon.png");
         this.setIconImage(favicon.getImage());
@@ -24,12 +24,8 @@ public class MainFrame extends JFrame {
         this.setTitle("Pictures Manager");
         this.setJMenuBar(menuBar);
 
-        panel.setBackground(Color.WHITE);
-        panel.setPreferredSize(new Dimension(450 ,calculatePanelHeight()));
-        JScrollPane scroll = new JScrollPane(panel);
-        scroll.getVerticalScrollBar().setUnitIncrement(16);
+        this.setContentPane(createPanel());
 
-        this.add(scroll);
         this.setVisible(true);
 
         /*
@@ -37,6 +33,20 @@ public class MainFrame extends JFrame {
           The panel height is managed automatically when Frame is resizing.
           The new panel height calculation is based on the total image and Frame height
          */
+
+    }
+
+    private JScrollPane createPanel(){
+        MainPanel panel = new MainPanel(menuBar);
+        this.totalImages = MainPanel.getIcons().size();
+
+        panel.setBackground(Color.WHITE);
+        panel.setPreferredSize(new Dimension(450 ,calculatePanelHeight()));
+
+        JScrollPane scroll = new JScrollPane(panel);
+
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
+
         this.getRootPane().addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
@@ -44,6 +54,15 @@ public class MainFrame extends JFrame {
             }
 
         });
+
+        return scroll;
+
+    }
+
+    public void refreshPanel(){
+        this.setContentPane(this.createPanel());
+        this.validate();
+        this.repaint();
     }
 
 

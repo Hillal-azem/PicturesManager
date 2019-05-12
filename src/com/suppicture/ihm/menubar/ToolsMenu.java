@@ -1,5 +1,6 @@
 package com.suppicture.ihm.menubar;
 
+import com.suppicture.ihm.frame.MainFrame;
 import com.suppicture.ihm.panel.ImagesProcess;
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ public class ToolsMenu extends JMenuBar{
     private Color bgColor = Color.WHITE;
     private static List<JMenu> menus = new ArrayList<>();
 
-    public ToolsMenu() {
+    public ToolsMenu(MainFrame frame) {
         JMenu menuFile = new JMenu("File");
         this.add(menuFile);
         ToolsMenu.menus.add(menuFile);
@@ -31,7 +32,7 @@ public class ToolsMenu extends JMenuBar{
 
         MyJMenuItem importItem = new MyJMenuItem("Import");
         menuFile.add(importItem);
-        ItemsAction.actionImport(importItem);
+        ItemsAction.actionImport(importItem, frame);
 
         MyJMenuItem selectAllItems = new MyJMenuItem("Select all");
         menuFile.add(selectAllItems);

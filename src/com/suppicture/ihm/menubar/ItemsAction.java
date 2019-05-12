@@ -1,9 +1,9 @@
 package com.suppicture.ihm.menubar;
 
 import com.suppicture.file.process.ImagesFilter;
+import com.suppicture.ihm.frame.MainFrame;
 import com.suppicture.ihm.panel.ImagesProcess;
 import com.suppicture.ihm.panel.MainPanel;
-import com.suppicture.images.process.Icon;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,8 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 /***
  * Class with static methods. It manages the click events
@@ -27,7 +25,7 @@ class ItemsAction {
      * Static method managing event of importing images
      * @param item MyJMenuItem
      */
-    static void actionImport(MyJMenuItem item){
+    static void actionImport(MyJMenuItem item, MainFrame frame){
 
         item.addActionListener(new ActionListener() {
 
@@ -55,6 +53,9 @@ class ItemsAction {
                         try {
                             image = ImageIO.read(file);
                             ImageIO.write(image, imageExtension, new File("Images/myImages/" + file.getName()));
+
+                            frame.refreshPanel();
+
 
                         } catch (Exception e1) {
                             e1.printStackTrace();

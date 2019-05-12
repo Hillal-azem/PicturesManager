@@ -58,6 +58,7 @@ public class MainPanel extends JPanel {
                     }
 
                     ToolsMenu.enableEditMenu();
+                    ToolsMenu.enableViewMenu();
 
                 }
             });

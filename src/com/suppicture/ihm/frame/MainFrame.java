@@ -24,7 +24,7 @@ public class MainFrame extends JFrame {
         this.setTitle("Pictures Manager");
         this.setJMenuBar(menuBar);
 
-        this.setContentPane(createPanel());
+        this.setContentPane(displayAllPictures());
 
         this.setVisible(true);
 
@@ -36,7 +36,7 @@ public class MainFrame extends JFrame {
 
     }
 
-    private JScrollPane createPanel(){
+    private JScrollPane displayAllPictures(){
         MainPanel panel = new MainPanel(menuBar);
         this.totalImages = MainPanel.getIcons().size();
 
@@ -60,7 +60,7 @@ public class MainFrame extends JFrame {
     }
 
     public void refreshPanel(){
-        this.setContentPane(this.createPanel());
+        this.setContentPane(this.displayAllPictures());
         this.validate();
         this.repaint();
     }

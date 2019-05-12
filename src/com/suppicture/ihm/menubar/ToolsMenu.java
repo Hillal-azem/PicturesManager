@@ -1,6 +1,7 @@
 package com.suppicture.ihm.menubar;
 
 import com.suppicture.ihm.frame.MainFrame;
+import com.suppicture.ihm.frame.OnePictureFrame;
 import com.suppicture.ihm.panel.ImagesProcess;
 
 import javax.swing.*;
@@ -45,14 +46,18 @@ public class ToolsMenu extends JMenuBar{
         MyJMenuItem renameItem = new MyJMenuItem("Rename");
         renameItem.setEnabled(false);
         menuEdit.add(renameItem);
-        ItemsAction.actionRename(renameItem);
+        ItemsAction.actionRename(renameItem,frame);
 
         MyJMenuItem deleteItem = new MyJMenuItem("Delete");
         deleteItem.setEnabled(false);
         menuEdit.add(deleteItem);
-        ItemsAction.actionDelete(renameItem);
+        ItemsAction.actionDelete(deleteItem,frame);
 
-        
+        MyJMenuItem viewItem = new MyJMenuItem("View picture");
+        viewItem.setEnabled(false);
+        menuView.add(viewItem);
+        ItemsAction.actionView(viewItem);
+
     }
 
     private String[] stringToArray(String...array){
@@ -86,6 +91,22 @@ public class ToolsMenu extends JMenuBar{
             }
         }
     }
+
+    public static void enableViewMenu(){
+        if (ImagesProcess.noImagesSelected()){
+            menus.get(2).getItem(0).setEnabled(false);
+        }
+        else {
+            menus.get(2).getItem(0).setEnabled(true);
+            if (ImagesProcess.getSelectedImages().size() == 1){
+                menus.get(2).getItem(0).setEnabled(true);
+            }
+            else {
+                menus.get(2).getItem(0).setEnabled(false);
+            }
+        }
+    }
+
 
 
 

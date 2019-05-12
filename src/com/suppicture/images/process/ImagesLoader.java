@@ -12,6 +12,9 @@ import java.util.List;
 public class ImagesLoader {
 
     private static ImagesLoader instance = null;
+    private static final int imageWidth = 130;
+    private static final int imageHeight = 100;
+
 
     private String pathToImages;
     private File[] imageFiles;
@@ -52,7 +55,7 @@ public class ImagesLoader {
         for (File file :
                 imageFiles) {
             try {
-                image = scale(ImageIO.read(file), 130, 100);
+                image = scale(ImageIO.read(file), imageWidth, imageHeight);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -80,5 +83,11 @@ public class ImagesLoader {
         return icons;
     }
 
+    public static int getImageWidth() {
+        return imageWidth;
+    }
 
+    public static int getImageHeight() {
+        return imageHeight;
+    }
 }

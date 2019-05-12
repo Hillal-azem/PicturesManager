@@ -81,5 +81,6 @@ public class MainPanel extends JPanel {
     public static List<Icon> getIcons() {
         return icons;
     }
+
 }
 

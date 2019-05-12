@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        MainFrame windows = new MainFrame();
+        MainFrame window = new MainFrame();
 
         //ImagesLoader images = new ImagesLoader("Images/myImages");
     }

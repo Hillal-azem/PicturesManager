@@ -57,7 +57,7 @@ public class MainPanel extends JPanel {
                         finalImageButton.setBorder(new LineBorder(Color.BLUE));
                     }
 
-                    menuBar.enableEditMenu();
+                    ToolsMenu.enableEditMenu();
 
                 }
             });

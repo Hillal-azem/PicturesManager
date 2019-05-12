@@ -1,26 +1,32 @@
 package com.suppicture.ihm.menubar;
 
-import com.suppicture.ihm.frame.MainFrame;
 import com.suppicture.ihm.panel.ImagesProcess;
-import com.suppicture.ihm.panel.MainPanel;
-import com.suppicture.images.process.ImagesLoader;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ToolsMenu extends JMenuBar{
 
     private Color bgColor = Color.WHITE;
+    private static List<JMenu> menus = new ArrayList<>();
 
     public ToolsMenu() {
         JMenu menuFile = new JMenu("File");
         this.add(menuFile);
+        ToolsMenu.menus.add(menuFile);
         JMenu menuEdit = new JMenu("Edit");
         this.add(menuEdit);
+        menus.add(menuEdit);
         JMenu menuView = new JMenu("View");
         this.add(menuView);
+        menus.add(menuView);
         JMenu menuHelp = new JMenu("Help");
         this.add(menuHelp);
+        menus.add(menuHelp);
+
+
 
 
         MyJMenuItem importItem = new MyJMenuItem("Import");
@@ -45,19 +51,7 @@ public class ToolsMenu extends JMenuBar{
         menuEdit.add(deleteItem);
         ItemsAction.actionDelete(renameItem);
 
-
-        //MenuItems menuItemsImport = new MenuItems(stringToArray("Import"),menuFile);
-        //ItemsAction.actionFile(menuItemsImport.getMenuItems());
-
-        //MenuItems menuItemsEdit = new MenuItems(stringToArray("Rename","Delete"),menuEdit);
-        //menuItemsEdit.getMenuItems().get(0).setEnabled(false);
-        //menuItemsEdit.getMenuItems().get(1).setEnabled(false);
-        //ItemsAction.actionEdit(menuItemsEdit.getMenuItems());
-
-        //ItemsAction.actionView(new MenuItems(stringToArray("DisplayView","Undisplayed View"),menuView).getMenuItems());
-        //ItemsAction.actionHelp(new MenuItems(stringToArray("help ?"),menuHelp).getMenuItems());
-
-
+        
     }
 
     private String[] stringToArray(String...array){
@@ -72,20 +66,26 @@ public class ToolsMenu extends JMenuBar{
         g2d.fillRect(0, 0, getWidth() - 1, getHeight() - 1);
     }
 
-    public void enableEditMenu(){
+    /**
+     * Static method enabling/desablic options on the
+     * menuBar's editMenu
+     */
+    public static void enableEditMenu(){
         if (ImagesProcess.noImagesSelected()){
-            this.getMenu(1).getItem(1).setEnabled(false);
-            this.getMenu(1).getItem(0).setEnabled(false);
+            menus.get(1).getItem(1).setEnabled(false);
+            menus.get(1).getItem(0).setEnabled(false);
         }
         else {
-            this.getMenu(1).getItem(1).setEnabled(true);
+            menus.get(1).getItem(1).setEnabled(true);
             if (ImagesProcess.getSelectedImages().size() == 1){
-                this.getMenu(1).getItem(0).setEnabled(true);
+                menus.get(1).getItem(0).setEnabled(true);
             }
             else {
-                this.getMenu(1).getItem(0).setEnabled(false);
+                menus.get(1).getItem(0).setEnabled(false);
             }
         }
     }
+
+
 
 }

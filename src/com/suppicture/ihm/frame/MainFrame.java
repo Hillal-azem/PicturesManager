@@ -13,7 +13,6 @@ public class MainFrame extends JFrame {
     private int totalImages;
     private ToolsMenu menuBar = new ToolsMenu();
     private MainPanel panel = new MainPanel(menuBar);
-    private JScrollPane scroll = new JScrollPane(panel);
 
     public MainFrame() throws HeadlessException, IOException {
         this.totalImages = MainPanel.getIcons().size();
@@ -27,6 +26,9 @@ public class MainFrame extends JFrame {
 
         panel.setBackground(Color.WHITE);
         panel.setPreferredSize(new Dimension(450 ,calculatePanelHeight()));
+        JScrollPane scroll = new JScrollPane(panel);
+        scroll.getVerticalScrollBar().setUnitIncrement(16);
+
         this.add(scroll);
         this.setVisible(true);
 

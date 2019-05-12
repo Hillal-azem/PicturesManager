@@ -71,7 +71,7 @@ class ItemsAction {
      * Static method managing event of editing. Rename and delete
      * @param item MyJMenuItem
      */
-    public static void actionRename(MyJMenuItem item){
+    static void actionRename(MyJMenuItem item){
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,7 +81,7 @@ class ItemsAction {
         });
     }
 
-    public static void actionDelete(MyJMenuItem item){
+    static void actionDelete(MyJMenuItem item){
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,7 +110,7 @@ class ItemsAction {
         });
     }
 
-    public static void actionSelectAll(MyJMenuItem selectAllItems) {
+    static void actionSelectAll(MyJMenuItem selectAllItems) {
         selectAllItems.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -120,11 +120,12 @@ class ItemsAction {
                     imageButton.setBorderPainted(true);
                     imageButton.setBorder(new LineBorder(Color.BLUE));
                 }
+                ToolsMenu.enableEditMenu();
             }
         });
     }
 
-    public static void actionUnselectAll(MyJMenuItem unselectAllItems){
+    static void actionUnselectAll(MyJMenuItem unselectAllItems){
         unselectAllItems.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,6 +134,7 @@ class ItemsAction {
                         MainPanel.getImageButtons()) {
                     imageButton.setBorderPainted(false);
                 }
+                ToolsMenu.enableEditMenu();
             }
         });
     }

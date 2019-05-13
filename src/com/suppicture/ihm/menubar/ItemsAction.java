@@ -6,6 +6,7 @@ import com.suppicture.ihm.frame.OnePictureFrame;
 import com.suppicture.ihm.panel.ImagesProcess;
 import com.suppicture.ihm.panel.MainPanel;
 import com.suppicture.images.process.Icon;
+import com.suppicture.images.process.ImagesLoader;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -28,6 +29,11 @@ class ItemsAction {
      * Static method managing event of importing images
      * @param item MyJMenuItem
      */
+
+    private static ImagesFilter imagesFilter = new ImagesFilter(
+            new String[]{"png", "jpeg", "jpg"},
+            "Images must be of format: *.jpeg, *.png, *.jpg");
+
     static void actionImport(MyJMenuItem item, MainFrame frame){
 
         item.addActionListener(new ActionListener() {
@@ -35,10 +41,6 @@ class ItemsAction {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BufferedImage image;
-
-                ImagesFilter imagesFilter = new ImagesFilter(
-                        new String[]{"png", "jpeg", "jpg"},
-                        "Images must be of format: *.jpeg, *.png, *.jpg");
 
                 JFileChooser choices = new JFileChooser();
                 choices.setFileFilter(imagesFilter);
@@ -57,20 +59,18 @@ class ItemsAction {
                             image = ImageIO.read(file);
                             ImageIO.write(image, imageExtension, new File("Images/myImages/" + file.getName()));
 
-                            frame.refreshPanel();
-
 
                         } catch (Exception e1) {
                             e1.printStackTrace();
                         }
                     }
+                    frame.refreshPanel();
                 }
 
             }
         });
 
     }
-
     /**
      * Static method managing event of editing. Rename and delete
      * @param item MyJMenuItem
@@ -80,15 +80,35 @@ class ItemsAction {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    List<Icon> icons = ImagesProcess.getSelectedImages();
+                    List<Icon> selectIcons = ImagesProcess.getSelectedImages();
 
-                    Object result = JOptionPane.showInputDialog(frame, "Enter printer name:");
+                    String newName = JOptionPane.showInputDialog(frame, "Enter printer name:",selectIcons.get(0).getName());
 
-                    if (result != null){
-                        File file = new File(icons.get(0).getPath());
-                        File destination = new File("Images/myImages/"+result+".png");
-                        file.renameTo(destination);
-                        frame.refreshPanel();
+                    if (newName != null){
+                        File firstImage = new File(selectIcons.get(0).getPath());
+
+                        File newImage;
+
+                        String suffix = extention(newName);
+
+                        if (suffix == null || !imagesFilter.isAuthozedFormat(suffix)){
+                            newImage = new File("Images/myImages/"+newName+".png");
+                        }
+                        else{
+                            newImage = new File("Images/myImages/"+newName);
+                        }
+
+                        if(canChange(newImage.getName())){
+                            firstImage.renameTo(newImage);
+                            frame.refreshPanel();
+                            ImagesProcess.removeAllFromList();
+                            ToolsMenu.enableEditMenu();
+
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(frame,"This file already exist");
+                        }
+
                     }
 
                 }catch (Exception e1){
@@ -119,6 +139,8 @@ class ItemsAction {
                             file.delete();
                         }
                         frame.refreshPanel();
+                        ImagesProcess.removeAllFromList();
+                        ToolsMenu.enableEditMenu();
                     }
 
                 }catch (Exception e1){
@@ -149,11 +171,16 @@ class ItemsAction {
         });
     }
 
-    public static void actionHelp(MyJMenuItem item){
+    public static void actionHelp(MyJMenuItem item, MainFrame frame){
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String newline=System.getProperty("line.separator");
+                JOptionPane.showMessageDialog(frame,
+                        "[+] To import picture click on the menu file then import and select files (png, jpg ...)"+newline+newline+
+                                "[+] Click on a picture to rename or delete it by clicking on the edit menu"+newline+newline+
+                                "[+] You can also click on view to display the selected picture"+newline+newline+
+                                "[+] If you click on several photos you only have the choice to delete pictures");
             }
         });
     }
@@ -187,5 +214,31 @@ class ItemsAction {
                 ToolsMenu.enableViewMenu();
             }
         });
+    }
+
+    private static String extention(String fileName) {
+        String suffix = null;
+
+        int i = fileName.lastIndexOf('.');
+        if(i > 0 &&  i < fileName.length() - 1)
+            suffix = fileName.substring(i+1).toLowerCase();
+
+        return suffix;
+    }
+
+    private static boolean canChange(String newName){
+
+        ImagesLoader imagesLoader = ImagesLoader.getInstance();
+        List<Icon> allIcons = imagesLoader.getIcons();
+
+        boolean isDifferentImage = true;
+
+        for (Icon allIcon : allIcons) {
+            if (allIcon.getName().equals(newName)){
+                isDifferentImage = false;
+                break;
+            }
+        }
+        return isDifferentImage;
     }
 }

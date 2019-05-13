@@ -9,7 +9,7 @@ public class OnePictureFrame extends JFrame{
 
     public OnePictureFrame(Icon icon) {
 
-        this.setSize(1240, 800);
+        this.setExtendedState(Frame.MAXIMIZED_BOTH);
         this.setMinimumSize(new Dimension(490,0));
         this.setLocationRelativeTo(null);
         ImageIcon favicon = new ImageIcon("Images/favicon.png");

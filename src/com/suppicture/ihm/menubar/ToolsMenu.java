@@ -58,6 +58,10 @@ public class ToolsMenu extends JMenuBar{
         menuView.add(viewItem);
         ItemsAction.actionView(viewItem);
 
+        MyJMenuItem helpItem = new MyJMenuItem("Controls");
+        menuHelp.add(helpItem);
+        ItemsAction.actionHelp(helpItem, frame);
+
     }
 
     private String[] stringToArray(String...array){

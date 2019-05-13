@@ -13,7 +13,7 @@ public class ImagesFilter extends FileFilter {
         this.description = description;
     }
 
-    private boolean isAuthozedFormat(String suffix){
+    public boolean isAuthozedFormat(String suffix){
         for (String authorizedFormat:
                 authorizedFormats) {
             if (suffix.equals(authorizedFormat)) return true;
